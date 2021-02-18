@@ -1,7 +1,8 @@
 import React from "react";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Link, Switch, Redirect } from "react-router-dom";
 import Home from "./Components/Home";
 import About from "./Components/About";
+import Coffee from "./Components/Coffee";
 
 function App() {
   return (
@@ -17,12 +18,10 @@ function App() {
         </ul>
       </nav>
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
+        <Route exact path="/" component={Home} />
+        <Redirect from="/home" to="/" />
+        <Route path="/about" component={About} />
+        <Route exact path="/coffee/:type" component={Coffee} />
       </Switch>
     </div>
   );
