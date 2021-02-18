@@ -4,18 +4,14 @@ import { useEffect, useState } from "react";
 const Coffee = () => {
   let params = useParams();
   const [data, setData] = useState([]);
-  const fetchData = () => {
+
+  useEffect(() => {
     fetch(`https://api.sampleapis.com/coffee/${params.type}`)
       .then((data) => data.json())
       .then((data) => {
         setData(data);
       });
-  };
-
-  useEffect(() => {
-    console.log(params);
-    fetchData();
-  }, [data]);
+  }, [params]);
 
   return (
     <div className="container-outer">
